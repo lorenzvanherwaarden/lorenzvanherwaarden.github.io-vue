@@ -1,2 +1,2 @@
-# lorenzvanherwaarden.github.io
+# personal-website
 Personal website
