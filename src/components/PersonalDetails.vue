@@ -119,6 +119,17 @@ export default {
   font-size: 2.2rem;
 }
 
+@media (max-width: 460px) {
+  .personal-details__face {
+    height: 160px;
+    width: 160px;
+  }
+
+  .personal-details__link {
+    font-size: 1.8rem;
+  }
+}
+
 .personal-details__link--top-origin {
   transform-origin: top left;
 }
