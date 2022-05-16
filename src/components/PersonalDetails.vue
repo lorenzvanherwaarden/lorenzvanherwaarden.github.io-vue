@@ -3,7 +3,7 @@
     <img class="personal-details__face" alt="My face" :src="meImgUrl" />
     <div class="personal-details__info">
       <template v-for="(item, index) in itemsWithOffset" :key="index">
-        <a v-if="item.href" :href="item.href">
+        <a v-if="item.href" :href="item.href" target="_blank">
           <span
             v-for="(letter, index2) in item.name"
             :key="`${index}-${index2}`"
@@ -164,7 +164,7 @@ export default {
 
 @media (max-width: 460px) {
   .personal-details {
-    --face-dimension: 340px;
+    transform: translateX(-30vw);
   }
 
   .personal-details__link {

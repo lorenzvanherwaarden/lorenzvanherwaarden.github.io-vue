@@ -37,13 +37,13 @@ import NameAndRole from './components/NameAndRole.vue'
 
 @media (max-width: 630px) {
   :root {
-    --font-size-h1: 2.8rem;
+    --font-size-h1: 2.4rem;
   }
 }
 
 @media (max-width: 460px) {
   :root {
-    --font-size-h1: 2.2rem;
+    --font-size-h1: 2rem;
   }
 }
 
