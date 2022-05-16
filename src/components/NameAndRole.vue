@@ -16,25 +16,25 @@ export default {
   data() {
     return {
       items: [],
-    };
+    }
   },
 
   mounted() {
     window.setTimeout(() => {
       this.items.push({
-        id: "name",
-        label: "Lorenz van Herwaarden",
-      });
-    }, 500);
+        id: 'name',
+        label: 'Lorenz van Herwaarden',
+      })
+    }, 500)
 
     window.setTimeout(() => {
       this.items.push({
-        id: "role",
+        id: 'role',
         label: `Software Engineer at <a href="https://www.qlik.com" target="_blank" class="name-and-role__link">Qlik</a>`,
-      });
-    }, 2000);
+      })
+    }, 2000)
   },
-};
+}
 </script>
 
 <style>

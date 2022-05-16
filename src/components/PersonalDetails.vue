@@ -1,136 +1,174 @@
 <template>
   <div class="personal-details">
     <img class="personal-details__face" alt="My face" :src="meImgUrl" />
-    <div class="personal-details__links">
-      <a
-        v-for="(link, index) in links"
-        :key="link.name"
-        v-text="link.name"
-        :href="link.href"
-        class="personal-details__link"
-        :class="{
-          'personal-details__link--top-origin': index >= links.length / 2,
-        }"
-        :style="`transform: rotate(${link.angle}rad) translateX(-${link.translate}px);`"
-      />
+    <div class="personal-details__info">
+      <template v-for="(item, index) in itemsWithOffset" :key="index">
+        <a v-if="item.href" :href="item.href">
+          <span
+            v-for="(letter, index2) in item.name"
+            :key="`${index}-${index2}`"
+            :style="{ transform: getTransform(item.offset + index2) }"
+            class="personal-details__letter"
+            v-text="letter"
+          />
+        </a>
+        <span
+          v-else
+          v-for="(letter, index2) in item.name"
+          :key="`${index}-${index2}`"
+          :style="{ transform: getTransform(item.offset + index2) }"
+          class="personal-details__letter"
+          v-text="letter"
+        />
+      </template>
     </div>
   </div>
 </template>
 
 <script setup>
-import meImgUrl from "../assets/me.jpg";
-import getCustomSizeProperty from "../utils/getCustomSizeProperty";
+import meImgUrl from '../assets/me.jpg'
+import getCustomSizeProperty from '../utils/getCustomSizeProperty'
 </script>
 
 <script>
 export default {
   data() {
     return {
-      links: [
+      items: [
         {
-          name: "LinkedIn",
-          href: "https://www.linkedin.com/in/lorenzvanherwaarden/",
-          angle: 0,
-          translate: 0,
+          name: 'linkedin',
+          href: 'https://www.linkedin.com/in/lorenzvanherwaarden/',
         },
         {
-          name: "Github",
-          href: "https://github.com/lorenzvanherwaarden",
-          angle: 0,
-          translate: 0,
+          name: ' - ',
         },
         {
-          name: "Resumé",
-          href: "/resume.pdf",
-          angle: 0,
-          translate: 0,
+          name: 'resumé',
+          href: '/resume.pdf',
         },
         {
-          name: "Contact",
-          href: "mailto:lorenz.van.herwaarden@gmail.com",
-          angle: 0,
-          translate: 0,
+          name: ' - ',
+        },
+        {
+          name: 'github',
+          href: 'https://github.com/lorenzvanherwaarden',
+        },
+        {
+          name: ' - ',
+        },
+        {
+          name: 'contact',
+          href: 'mailto:lorenz.van.herwaarden@gmail.com',
+        },
+        {
+          name: ' - Lorenz van Herwaarden - ',
+        },
+        {
+          name: 'Software Engineer at Qlik - ',
         },
       ],
-    };
-  },
-
-  mounted() {
-    this.$nextTick(() => {
-      this.links = this.links.map((link, index) => {
-        const angle = this.getAngleForIndex(index);
-
-        return {
-          ...link,
-          angle,
-          translate: this.getTranslateForIndex(index, angle),
-        };
-      });
-    });
+    }
   },
 
   methods: {
-    getAngleForIndex(index) {
-      const linkHeight = getCustomSizeProperty("--font-size-body");
-      const mediumSpacingHeight = getCustomSizeProperty("--spacing-medium");
-      const linksLength = this.links.length;
-
-      const interSpace = mediumSpacingHeight + linkHeight;
-      const heightOffset = (index - (linksLength / 2 - 1) - 0.5) * interSpace;
-
-      return this.calculateAngleFromHeight(heightOffset);
+    getTransform(offset) {
+      return `${this.getTurn(offset)}`
     },
 
-    calculateAngleFromHeight(height) {
-      return Math.atan(height / 185.0);
-    },
-
-    getTranslateForIndex(index, angle) {
-      const mediumSpacingHeight = getCustomSizeProperty("--spacing-medium");
-
-      return Math.abs(Math.tan(angle) * mediumSpacingHeight);
+    getTurn(offset) {
+      const ratio = offset / this.amountOfLetters
+      return `rotate(${ratio}turn)`
     },
   },
-};
+
+  computed: {
+    itemsWithOffset() {
+      let offset = 0
+      return this.items.map((item) => {
+        const formatted = {
+          ...item,
+          offset,
+        }
+
+        offset += item.name.length
+
+        return formatted
+      })
+    },
+
+    amountOfLetters() {
+      return this.items.reduce((counter, item) => counter + item.name.length, 0)
+    },
+  },
+}
 </script>
 
 <style scoped>
 .personal-details {
+  --face-dimension: 340px;
+  position: relative;
   display: flex;
   align-items: center;
-}
-
-.personal-details__face {
-  height: 230px;
-  width: 230px;
-  border-radius: 50%;
   animation: 1s ease-out 0s 1 fade;
 }
 
-.personal-details__links {
-  margin-left: 70px;
+.personal-details a {
+  color: var(--color-text);
 }
 
-.personal-details__link {
-  display: block;
-  margin: var(--spacing-medium) 0;
-  transition: transform 1.3s, opacity 0.3s;
-  transform-origin: bottom left;
-  font-size: 2.2rem;
+.personal-details a:hover,
+.personal-details a:focus {
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.personal-details__face {
+  position: relative;
+  left: 0px;
+  height: calc(var(--face-dimension));
+  width: calc(var(--face-dimension));
+  border-radius: 50%;
+  border: solid 24px var(--color-background);
+  box-sizing: border-box;
+}
+
+.personal-details__info {
+  position: absolute;
+  width: var(--face-dimension);
+  height: var(--face-dimension);
+  left: calc(50% - 6px);
+  top: 1px;
+  animation: rotate 50s linear infinite;
+  transform-origin: 6px calc(50% - 1px);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.personal-details__letter {
+  font-family: 'Source Code Pro', monospace;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 11px;
+  height: calc(var(--face-dimension) / 2);
+  transform-origin: bottom center;
 }
 
 @media (max-width: 460px) {
-  .personal-details__face {
-    height: 160px;
-    width: 160px;
+  .personal-details {
+    --face-dimension: 340px;
   }
 
   .personal-details__link {
     font-size: 1.8rem;
   }
-}
-
-.personal-details__link--top-origin {
-  transform-origin: top left;
 }
 </style>
