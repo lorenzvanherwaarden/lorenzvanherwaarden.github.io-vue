@@ -27,7 +27,6 @@
 
 <script setup>
 import meImgUrl from '../assets/me.jpg'
-import getCustomSizeProperty from '../utils/getCustomSizeProperty'
 </script>
 
 <script>
@@ -109,7 +108,6 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  animation: 1s ease-out 0s 1 fade;
 }
 
 .personal-details a {

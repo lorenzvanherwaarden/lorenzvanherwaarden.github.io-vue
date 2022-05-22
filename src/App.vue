@@ -86,16 +86,4 @@ h1 {
   justify-content: center;
   height: 100vh;
 }
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 </style>
