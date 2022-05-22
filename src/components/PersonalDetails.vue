@@ -108,6 +108,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
+  transform-origin: center;
 }
 
 .personal-details a {
@@ -162,7 +163,7 @@ export default {
 
 @media (max-width: 460px) {
   .personal-details {
-    transform: translateX(-30vw);
+    transform: scale(0.75);
   }
 
   .personal-details__link {
