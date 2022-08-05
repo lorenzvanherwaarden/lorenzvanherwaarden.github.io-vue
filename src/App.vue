@@ -1,6 +1,9 @@
 <template>
-  <div class="central">
-    <PersonalDetails />
+  <div>
+    <Cars />
+    <div class="central">
+      <PersonalDetails />
+    </div>
     <NameAndRole />
   </div>
 </template>
@@ -8,14 +11,16 @@
 <script setup>
 import PersonalDetails from './components/PersonalDetails.vue'
 import NameAndRole from './components/NameAndRole.vue'
+import Cars from './components/Cars.vue'
 </script>
 
 <style>
 :root {
   --rgb-primary: 120, 139, 207;
+  --rgb-background: 37, 37, 37;
   --color-primary: rgb(var(--rgb-primary));
   --color-text: rgb(230, 230, 230);
-  --color-background: rgb(37, 37, 37);
+  --color-background: rgb(var(--rgb-background));
 
   --font-family: 'Karla', sans-serif;
   --font-size-base: 10px;
@@ -60,6 +65,12 @@ body {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-body);
   margin: 0;
+}
+
+#app {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, lightgrey 1px, transparent 1px),
+    linear-gradient(to bottom, lightgrey 1px, transparent 1px);
 }
 
 a {

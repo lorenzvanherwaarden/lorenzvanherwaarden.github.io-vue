@@ -127,7 +127,7 @@ export default {
   height: calc(var(--face-dimension));
   width: calc(var(--face-dimension));
   border-radius: 50%;
-  border: solid 24px var(--color-background);
+  border: solid 24px transparent;
   box-sizing: border-box;
 }
 
