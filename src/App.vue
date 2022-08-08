@@ -1,3 +1,8 @@
+<script setup>
+import PersonalDetails from './components/PersonalDetails.vue'
+import NameAndRole from './components/NameAndRole.vue'
+</script>
+
 <template>
   <div class="central">
     <PersonalDetails />
@@ -5,15 +10,9 @@
   </div>
 </template>
 
-<script setup>
-import PersonalDetails from './components/PersonalDetails.vue'
-import NameAndRole from './components/NameAndRole.vue'
-</script>
-
 <style>
 :root {
-  --rgb-primary: 120, 139, 207;
-  --color-primary: rgb(var(--rgb-primary));
+  --color-primary: rgb(120, 139, 207);
   --color-text: rgb(230, 230, 230);
   --color-background: rgb(37, 37, 37);
 
