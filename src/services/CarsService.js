@@ -32,11 +32,11 @@ class CarsService {
         car.nextStep()
         car.calculateCells()
       })
-      // this.next()
+      this.next()
     })
   }
 
-  getOverlap() {}
+  getOverlap() { }
 }
 
 export default CarsService
