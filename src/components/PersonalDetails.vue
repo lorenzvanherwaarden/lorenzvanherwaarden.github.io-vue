@@ -137,7 +137,7 @@ export default {
   height: var(--face-dimension);
   left: calc(50% - 6px);
   top: 1px;
-  animation: rotate 50s linear infinite;
+  animation: rotate 70s linear infinite;
   transform-origin: 6px calc(50% - 1px);
 }
 
