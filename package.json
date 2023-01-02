@@ -8,12 +8,11 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "vue": "^3.0.5"
+    "vue": "^3.2.45"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.10.2",
-    "@vue/compiler-sfc": "^3.2.45",
+    "@vitejs/plugin-vue": "^4.0.0",
     "prettier": "2.6.2",
-    "vite": "^2.9.15"
+    "vite": "^4.0.0"
   }
 }
