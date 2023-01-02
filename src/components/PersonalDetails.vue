@@ -63,7 +63,7 @@ export default {
           name: ' - Lorenz van Herwaarden - ',
         },
         {
-          name: 'Software Engineer at Qlik - ',
+          name: 'Tech Lead at Qlik - ',
         },
       ],
     }

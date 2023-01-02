@@ -30,7 +30,7 @@ export default {
     window.setTimeout(() => {
       this.items.push({
         id: 'role',
-        label: `Software Engineer at <a href="https://www.qlik.com" target="_blank" class="name-and-role__link">Qlik</a>`,
+        label: `Tech Lead at <a href="https://www.qlik.com" target="_blank" class="name-and-role__link">Qlik</a>`,
       })
     }, 2000)
   },
